@@ -1,1 +1,206 @@
 
+CORE-SW2#show running-config
+Building configuration...
+
+Current configuration : 3478 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname CORE-SW2
+!
+!
+enable secret 5 $1$mERr$CJwqOh3WnG/b.aT8NV1J0.
+!
+!
+ip dhcp excluded-address 10.20.10.1 10.20.10.20
+ip dhcp excluded-address 10.20.20.1 10.20.20.20
+ip dhcp excluded-address 10.20.30.1 10.20.30.20
+ip dhcp excluded-address 10.20.40.1 10.20.40.20
+!
+ip dhcp pool VLAN10-USERS
+ network 10.20.10.0 255.255.255.0
+ default-router 10.20.10.1
+ dns-server 8.8.8.8
+ip dhcp pool VLAN20-SERVERS
+ network 10.20.20.0 255.255.255.0
+ default-router 10.20.20.1
+ dns-server 8.8.8.8
+ip dhcp pool VLAN30-MANAGEMENT
+ network 10.20.30.0 255.255.255.0
+ default-router 10.20.30.1
+ dns-server 8.8.8.8
+ip dhcp pool VLAN40-GUEST
+ network 10.20.40.0 255.255.255.0
+ default-router 10.20.40.1
+ dns-server 8.8.8.8
+!
+!
+ip routing
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$mERr$kku/hiJPh.4Yp8Xor/4kz1
+!
+!
+!
+!
+!
+!
+!
+ ip ssh version 2
+ip domain-name enterprise.local
+!
+!
+spanning-tree mode pvst
+spanning-tree vlan 10,20,30,40,99 priority 28672
+!
+!
+!
+!
+!
+!
+interface Port-channel2
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ no switchport
+ ip address 10.10.102.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/2
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0002.1718.2301
+ ip address 10.20.10.1 255.255.255.0
+interface Vlan20
+ mac-address 0002.1718.2302
+ ip address 10.20.20.1 255.255.255.0
+!
+interface Vlan30
+ mac-address 0002.1718.2303
+ ip address 10.20.30.1 255.255.255.0
+!
+interface Vlan40
+ mac-address 0002.1718.2304
+ ip address 10.20.40.1 255.255.255.0
+!
+interface Vlan99
+ mac-address 0002.1718.2305
+ ip address 10.20.99.1 255.255.255.0
+!
+router ospf 1
+ router-id 2.2.2.2
+ log-adjacency-changes
+ network 10.20.10.0 0.0.0.255 area 0
+ network 10.20.20.0 0.0.0.255 area 0
+ network 10.20.30.0 0.0.0.255 area 0
+ network 10.20.40.0 0.0.0.255 area 0
+ network 10.20.99.0 0.0.0.255 area 0
+ network 10.10.102.0 0.0.0.3 area 0
+!
+ip default-gateway 10.20.99.1
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CAUTHORIZED ACCESS ONLY - CORE-SW2^C
+!
+!
+!
+!
+!
+line con 0
+ password Console@123
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password VTY@123
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
+
+CORE-SW2#
+CORE-SW2#
