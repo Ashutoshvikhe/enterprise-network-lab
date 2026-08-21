@@ -268,7 +268,7 @@ The following network features were verified during the lab implementation.
 | VLAN Configuration | ✅ Verified |
 | 802.1Q Trunking | ✅ Verified |
 | EtherChannel / LACP | ✅ Verified |
-| STP / Rapid-PVST | ✅ Verified |
+| STP / PVST | ✅ Verified |
 | Inter-VLAN Routing | ✅ Verified |
 | OSPF Dynamic Routing | ✅ Verified |
 | DHCP | ✅ Verified |
@@ -384,7 +384,7 @@ enterprise-network-lab/
 - Layer 3 Switching
 - VLAN Segmentation
 - 802.1Q Trunking
-- STP / Rapid-PVST
+- STP / PVST
 - EtherChannel / LACP
 - Inter-VLAN Routing
 - OSPF Dynamic Routing
