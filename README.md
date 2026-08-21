@@ -9,6 +9,19 @@
 A practical Cisco enterprise networking lab demonstrating enterprise LAN/WAN design, VLAN segmentation, Layer 2 and Layer 3 switching, inter-VLAN routing, STP, EtherChannel, OSPF, DHCP, SSH, ACL-based security, troubleshooting, and network verification using Cisco Packet Tracer.
 
 ---
+## Project Highlights
+
+- Designed and implemented a multi-layer enterprise network using Cisco Packet Tracer
+- Implemented VLAN segmentation for users, servers, management, and guest networks
+- Configured 802.1Q trunking and LACP EtherChannel for redundancy and increased bandwidth
+- Implemented PVST for Layer 2 loop prevention
+- Configured Layer 3 SVIs for inter-VLAN routing
+- Implemented OSPF dynamic routing between the core switches and routing infrastructure
+- Configured DHCP for automated endpoint IP addressing
+- Enabled SSH Version 2 for secure device management
+- Implemented extended ACLs to restrict guest network access
+- Performed network verification and troubleshooting using Cisco IOS commands  
+---
 
 ## Project Overview
 
