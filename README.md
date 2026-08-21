@@ -167,6 +167,19 @@ The core switches advertise their connected VLAN networks through OSPF.
 
 OSPF adjacency was verified using:
 show ip ospf neighbor
+
+Expected state:
+FULL
+
+Routing tables were verified using:
+show ip route
+
+OSPF-learned routes are identified with:
+O
+The lab successfully demonstrates dynamic routing between the network segments.
+
+
+
 Switching
 VLANs
 
