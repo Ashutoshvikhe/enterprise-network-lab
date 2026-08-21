@@ -66,17 +66,64 @@ The following diagram shows the enterprise network topology implemented in Cisco
 
 ## Network Architecture
 
-The topology consists of:
+The lab follows a hierarchical enterprise network architecture consisting of an edge router, core Layer 3 switches, access switches, and end devices.
 
-- R1-EDGE
-- R2-CORE
-- CORE-SW1
-- CORE-SW2
-- ACCESS-SW1
-- ACCESS-SW2
-- User PCs
-- Server
-- Guest endpoint
+### Network Flow
+
+
+                         ┌─────────────┐
+                         │  R1-EDGE    │
+                         │ Edge Router │
+                         └──────┬──────┘
+                                │
+                             OSPF
+                                │
+                         ┌──────┴──────┐
+                         │  R2-CORE    │
+                         │ Core Router │
+                         └──────┬──────┘
+                                │
+                    ┌───────────┴───────────┐
+                    │                       │
+             ┌──────▼──────┐         ┌──────▼──────┐
+             │  CORE-SW1   │=========│  CORE-SW2   │
+             │ Layer 3 SW  │ LACP    │ Layer 3 SW  │
+             └──────┬──────┘         └──────┬──────┘
+                    │                       │
+              EtherChannel             EtherChannel
+                    │                       │
+             ┌──────▼──────┐         ┌──────▼──────┐
+             │ ACCESS-SW1  │         │ ACCESS-SW2  │
+             │ Layer 2 SW  │         │ Layer 2 SW  │
+             └──────┬──────┘         └──────┬──────┘
+                    │                       │
+             ┌──────┴──────┐         ┌──────┴──────┐
+             │ User PCs    │         │ User PCs    │
+             │ Server      │         │ Guest       │
+             └─────────────┘         └─────────────┘
+Network Components
+
+Device	Role
+R1-EDGE	Enterprise edge / upstream router
+R2-CORE	Core routing device
+CORE-SW1	Layer 3 core switch
+CORE-SW2	Layer 3 core switch
+ACCESS-SW1	Access Layer switch
+ACCESS-SW2	Access Layer switch
+User PCs	Internal user endpoints
+Server	Enterprise server endpoint
+Guest Endpoint	Guest network endpoint
+Network Technologies
+VLAN segmentation
+802.1Q trunking
+Inter-VLAN routing
+Rapid-PVST / STP
+EtherChannel using LACP
+OSPF dynamic routing
+DHCP
+SSH version 2
+Extended IPv4 ACLs
+
 
 ## VLAN Design
 
