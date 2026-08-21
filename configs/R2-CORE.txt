@@ -1,1 +1,40 @@
 
+!
+hostname R2-CORE
+!
+enable secret Cisco@123
+!
+service password-encryption
+!
+banner motd #AUTHORIZED ACCESS ONLY - R2-CORE#
+!
+line console 0
+ password Console@123
+ login
+!
+line vty 0 4
+ password VTY@123
+ login
+ transport input ssh
+!
+interface GigabitEthernet0/0
+ description WAN-to-R1-EDGE
+ ip address 10.10.100.2 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description Link-to-CORE-SW1
+ ip address 10.10.101.1 255.255.255.252
+ no shutdown
+!
+interface GigabitEthernet0/2
+ description Link-to-CORE-SW2
+ ip address 10.10.102.1 255.255.255.252
+ no shutdown
+!
+router ospf 1
+ router-id 3.3.3.3
+ network 10.10.101.0 0.0.0.3 area 0
+ network 10.10.102.0 0.0.0.3 area 0
+!
+end
