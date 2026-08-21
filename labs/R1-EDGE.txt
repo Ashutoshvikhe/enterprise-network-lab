@@ -1,0 +1,103 @@
+
+ENTERPRISE NETWORK LAB
+Device: R1-EDGE
+Role: Edge Router
+
+==================================================
+DEVICE CONFIGURATION
+==================================================
+
+Hostname:
+R1-EDGE
+
+Role:
+Enterprise Edge / Internet Gateway
+
+==================================================
+WAN / ROUTING
+==================================================
+
+WAN Interface:
+G0/0
+
+WAN IP:
+10.10.100.1/30
+
+Connected Device:
+R2-CORE
+
+R2-CORE IP:
+10.10.100.2/30
+
+==================================================
+OSPF
+==================================================
+
+OSPF Process:
+1
+
+Purpose:
+Routing between R1-EDGE and R2-CORE
+
+R2-CORE:
+OSPF Neighbor
+
+Router ID:
+Configured for OSPF
+
+==================================================
+DEFAULT ROUTE
+==================================================
+
+R1-EDGE provides the default route toward the Internet.
+
+Default Route:
+Configured toward Internet / ISP
+
+==================================================
+NAT
+==================================================
+
+NAT:
+Planned / Required
+
+Purpose:
+Provide Internet connectivity for internal networks.
+
+==================================================
+SECURITY
+==================================================
+
+Role:
+Enterprise perimeter / Internet edge
+
+Security functions:
+
+- Internet gateway
+- Default route
+- NAT
+- Routing toward internal network
+
+==================================================
+VERIFICATION
+==================================================
+
+show ip interface brief
+show ip route
+show ip ospf neighbor
+
+==================================================
+STATUS
+==================================================
+
+WAN Connectivity:
+Configured
+
+OSPF:
+Configured
+
+Default Route:
+Required toward Internet
+
+NAT:
+Planned for Internet access
