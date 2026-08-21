@@ -13,8 +13,23 @@ A practical Cisco enterprise networking lab demonstrating enterprise LAN/WAN des
 
 This project simulates a small enterprise network environment using Cisco Packet Tracer.
 
-The lab demonstrates:
+## Quick Navigation
 
+- [Project Overview](#project-overview)
+- [Project Demo](#project-demo)
+- [Network Architecture](#network-architecture)
+- [VLAN Design](#vlan-design)
+- [Routing](#routing)
+- [Switching](#switching)
+- [Network Security](#network-security)
+- [Verification](#verification)
+- [Skills Demonstrated](#skills-demonstrated)
+- [How to Use This Lab](#how-to-use-this-lab)
+- [Repository Structure](#repository-structure)
+- [Author](#author)
+
+
+The lab demonstrates:
 
 - Enterprise network topology design
 - VLAN segmentation
