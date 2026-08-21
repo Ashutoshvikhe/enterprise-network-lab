@@ -33,8 +33,8 @@ The lab demonstrates:
 ## Project Demo
 
 The following diagram shows the enterprise network topology implemented in Cisco Packet Tracer.
-
 ![Enterprise Network Topology](topology/enterprise-network-topology.png)
+
 
 ## Network Architecture
 
