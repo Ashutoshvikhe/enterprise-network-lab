@@ -20,7 +20,7 @@ The lab demonstrates practical implementation of:
 - VLAN segmentation
 - 802.1Q trunking
 - Inter-VLAN routing
-- Rapid-PVST / STP
+- PVST / STP
 - EtherChannel using LACP
 - OSPF dynamic routing
 - DHCP services
@@ -138,7 +138,7 @@ show etherchannel summary
 ```
 ### Spanning Tree Protocol (STP)
 
-Rapid-PVST / STP is used to prevent Layer 2 switching loops.
+PVST / STP is used to prevent Layer 2 switching loops.
 
 The core switches provide the STP root functionality for the VLANs in the lab.
 
@@ -348,7 +348,6 @@ enterprise-network-lab/
 │   ├── CORE-SW1.txt
 │   ├── CORE-SW2.txt
 │   ├── R1-EDGE.txt
-│   ├── R2-CORE.txt
 │   └── enterprise-network-lab.pkt
 │
 ├── topology/
@@ -398,7 +397,7 @@ The project includes:
 - VLAN segmentation
 - 802.1Q trunking
 - EtherChannel / LACP
-- STP / Rapid-PVST
+- STP / PVST
 - Inter-VLAN routing
 - OSPF dynamic routing
 - DHCP
