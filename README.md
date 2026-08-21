@@ -25,6 +25,8 @@ The lab demonstrates:
 
 ## Network Architecture
 
+![Enterprise Network Topology](topology/enterprise-network-topology.png)
+
 The topology consists of:
 
 - R1-EDGE
