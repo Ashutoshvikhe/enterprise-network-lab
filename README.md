@@ -28,6 +28,19 @@ This project simulates a small enterprise network environment using Cisco Packet
 - [Repository Structure](#repository-structure)
 - [Author](#author)
 
+## Project Resources
+
+| Resource | Description |
+|---|---|
+| [Network Topology](topology/enterprise-network-topology.png) | Enterprise network topology diagram |
+| [Packet Tracer Lab](labs/enterprise-network-lab.pkt) | Complete Cisco Packet Tracer lab |
+| [Device Configurations](configs/) | Cisco IOS configurations |
+| [Documentation](documentation/) | Network design and technical documentation |
+| [Verification](verification/) | Network verification results |
+| [Troubleshooting](documentation/troubleshooting.md) | Troubleshooting procedures and commands |
+| [IP Addressing Plan](documentation/ip-addressing-plan.md) | VLAN and IP addressing information |
+| [Network Security](documentation/network-security.md) | ACL and network security configuration |
+
 
 The lab demonstrates:
 
