@@ -1,6 +1,12 @@
 
 # Enterprise Network Lab
 
+![Cisco](https://img.shields.io/badge/Cisco-IOS-blue)
+![Packet Tracer](https://img.shields.io/badge/Cisco-Packet%20Tracer-blue)
+![OSPF](https://img.shields.io/badge/Routing-OSPF-orange)
+![VLAN](https://img.shields.io/badge/Switching-VLAN-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 A practical Cisco enterprise networking lab demonstrating enterprise LAN/WAN design, VLAN segmentation, inter-VLAN routing, STP, EtherChannel, OSPF, DHCP, SSH, ACLs, troubleshooting, and network verification.
 
 ## Project Overview
@@ -23,9 +29,14 @@ The lab demonstrates:
 - End-to-end connectivity testing
 - Network troubleshooting and verification
 
-## Network Architecture
+  
+## Project Demo
+
+The following diagram shows the enterprise network topology implemented in Cisco Packet Tracer.
 
 ![Enterprise Network Topology](topology/enterprise-network-topology.png)
+
+## Network Architecture
 
 The topology consists of:
 
@@ -198,7 +209,26 @@ SSH
 IPv4 ACL
 Inter-VLAN Routing
 Network Troubleshooting
-Skills Demonstrated
+
+## Skills Demonstrated
+
+- Enterprise LAN/WAN Network Design
+- Cisco Catalyst Switching
+- Layer 2 Switching
+- Layer 3 Switching
+- VLAN Segmentation
+- 802.1Q Trunking
+- Rapid-PVST / STP
+- EtherChannel / LACP
+- Inter-VLAN Routing
+- OSPF Dynamic Routing
+- DHCP
+- SSH Device Management
+- IPv4 ACLs
+- Network Security
+- Network Troubleshooting
+- Cisco IOS Configuration
+- Network Verification
 
 This project demonstrates practical skills in:
 
@@ -214,10 +244,34 @@ Connectivity verification
 Cisco IOS configuration
 Lab Platform
 
+## Lab Platform
+Cisco Packet Tracer
+## How to Use This Lab
+
+1. Install Cisco Packet Tracer.
+2. Download `enterprise-network-lab.pkt` from the `labs/` directory.
+3. Open the `.pkt` file in Cisco Packet Tracer.
+4. Review the network topology and device configurations.
+5. Use the configuration files in the `configs/` directory as reference.
+6. Use the `verification/` directory to review network verification results.
+7. Use the `documentation/` directory for detailed design, routing, switching, security, and troubleshooting information.
+
+## Lab Platform
+
 Cisco Packet Tracer
 
 Project Status
-
 Completed
 
 The lab configuration, connectivity testing, security controls, troubleshooting activities, and verification activities have been implemented and documented.
+
+
+## Author
+
+**Ashutosh Vikhe**
+
+Network & Security Engineer focused on Enterprise Networking, Cisco Switching & Routing, Cisco ISE, Network Security, and Network Automation.
+
+### Connect
+- GitHub: [Ashutoshvikhe](https://github.com/Ashutoshvikhe)
+- LinkedIn: https://www.linkedin.com/in/ashutosh-vikhe-1aa829201/
