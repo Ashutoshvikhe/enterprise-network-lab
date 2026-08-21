@@ -7,7 +7,7 @@ A practical Cisco enterprise networking lab demonstrating enterprise LAN/WAN des
 
 This project simulates a small enterprise network environment using Cisco Packet Tracer.
 
-The lab includes:
+The lab demonstrates:
 
 - Enterprise network topology design
 - VLAN segmentation
@@ -38,7 +38,7 @@ The topology consists of:
 
 ## VLAN Design
 
-| VLAN | Name | Network | Gateway |
+| VLAN ID | Name | Network | Gateway |
 |---|---|---|---|
 | 10 | USERS | 10.10.10.0/24 | 10.10.10.1 |
 | 20 | SERVERS | 10.10.20.0/24 | 10.10.20.1 |
@@ -48,21 +48,18 @@ The topology consists of:
 
 ## Routing
 
-OSPF is used as the dynamic routing protocol between the core network and the upstream router.
+OSPF is used as the dynamic routing protocol between the core network and upstream router.
 
 The core switches advertise their connected VLAN networks through OSPF.
 
-OSPF adjacency was successfully verified using:
-
-
+OSPF adjacency was verified using:
 show ip ospf neighbor
-
 Switching
 VLANs
 
-VLANs 10, 20, 30, 40 and 99 were configured across the switching infrastructure.
+VLANs 10, 20, 30, 40, and 99 are configured across the switching infrastructure.
 
-Trunking
+802.1Q Trunking
 
 802.1Q trunking is configured on the Port-channel uplinks.
 
@@ -79,17 +76,17 @@ LACP EtherChannel is used to provide redundancy and increased bandwidth.
 
 Configured Port-channels:
 
-CORE-SW1      Po1
-CORE-SW2      Po2
-ACCESS-SW1    Po1
-ACCESS-SW2    Po2
+CORE-SW1 — Po1
+CORE-SW2 — Po2
+ACCESS-SW1 — Po1
+ACCESS-SW2 — Po2
 
 Verification:
 
 show etherchannel summary
 Spanning Tree
 
-Spanning Tree Protocol is enabled to prevent Layer 2 switching loops.
+Rapid-PVST / STP is enabled to prevent Layer 2 switching loops.
 
 The core switches act as STP root bridges for their respective VLANs.
 
@@ -110,7 +107,7 @@ Network Security
 
 An extended ACL named GUEST-RESTRICT is configured to restrict guest network access.
 
-The guest VLAN is prevented from accessing internal user, server, management and remote internal networks.
+The guest VLAN is prevented from accessing internal user, server, management, and remote internal networks.
 
 ACL verification:
 
@@ -148,9 +145,7 @@ enterprise-network-lab/
 │   ├── ACCESS-SW1.txt
 │   ├── ACCESS-SW2.txt
 │   ├── CORE-SW1.txt
-│   ├── CORE-SW2.txt
-│   ├── R1-EDGE.txt
-│   └── R2-CORE.txt
+│   └── CORE-SW2.txt
 │
 ├── diagrams/
 │   ├── README.md
@@ -159,7 +154,16 @@ enterprise-network-lab/
 ├── documentation/
 │   ├── README.md
 │   ├── ip-addressing-plan.md
-│   └── verification-summary.md
+│   ├── network-design.md
+│   ├── network-requirements.md
+│   ├── network-security.md
+│   ├── network-services.md
+│   ├── project-summary.md
+│   ├── routing.md
+│   ├── switching.md
+│   ├── troubleshooting.md
+│   ├── verification-and-testing.md
+│   └── vlan-design.md
 │
 ├── labs/
 │   ├── ACCESS-SW1.txt
@@ -172,10 +176,12 @@ enterprise-network-lab/
 ├── topology/
 │
 ├── verification/
+│   ├── README.md
 │   └── verification-summary.md
 │
 ├── LICENSE
 └── README.md
+
 Key Technologies
 Cisco IOS
 Cisco Packet Tracer
@@ -186,8 +192,7 @@ LACP
 OSPF
 DHCP
 SSH
-IPv4
-ACL
+IPv4 ACL
 Inter-VLAN Routing
 Network Troubleshooting
 Skills Demonstrated
@@ -212,4 +217,4 @@ Project Status
 
 Completed
 
-The lab configuration, connectivity testing, security controls and verification activities have been implemented and documented.
+The lab configuration, connectivity testing, security controls, troubleshooting activities, and verification activities have been implemented and documented.
