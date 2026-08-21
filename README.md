@@ -9,6 +9,7 @@ This project simulates a small enterprise network environment using Cisco Packet
 
 The lab demonstrates:
 
+
 - Enterprise network topology design
 - VLAN segmentation
 - 802.1Q trunking
