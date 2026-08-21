@@ -22,7 +22,6 @@ A practical Cisco enterprise networking lab demonstrating enterprise LAN/WAN des
 - Implemented extended ACLs to restrict guest network access
 - Performed network verification and troubleshooting using Cisco IOS commands  
 ---
-
 ## Project Overview
 
 This project simulates a small enterprise network environment using Cisco Packet Tracer.
