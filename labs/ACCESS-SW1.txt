@@ -1,0 +1,147 @@
+
+
+ENTERPRISE NETWORK LAB
+Device: ACCESS-SW1
+Role: Layer 2 Access Switch
+
+==================================================
+DEVICE CONFIGURATION
+==================================================
+
+Hostname:
+ACCESS-SW1
+
+Management VLAN:
+VLAN 99
+
+Management IP:
+10.10.99.11/24
+
+Native VLAN:
+99
+
+==================================================
+VLAN CONFIGURATION
+==================================================
+
+VLAN 10 - USERS
+VLAN 20 - SERVERS
+VLAN 30 - MANAGEMENT
+VLAN 40 - GUEST
+VLAN 99 - NATIVE / MANAGEMENT
+
+==================================================
+ACCESS PORT ASSIGNMENTS
+==================================================
+
+Fa0/2 - VLAN 10 - USERS
+Fa0/3 - VLAN 10 - USERS
+Fa0/5 - VLAN 40 - GUEST
+
+==================================================
+TRUNK CONFIGURATION
+==================================================
+
+Port-Channel:
+Po1
+
+Mode:
+802.1Q Trunk
+
+Native VLAN:
+99
+
+Allowed VLANs:
+10,20,30,40,99
+
+==================================================
+ETHERCHANNEL
+==================================================
+
+Port-Channel:
+Po1
+
+Protocol:
+LACP
+
+Member Interfaces:
+Fa0/1
+Fa0/4
+
+Status:
+Po1(SU)
+
+==================================================
+SPANNING TREE
+==================================================
+
+Protocol:
+IEEE Rapid-PVST
+
+VLAN 10:
+Root Port - Po1
+State - Forwarding
+
+VLAN 20:
+Root Port - Po1
+State - Forwarding
+
+VLAN 30:
+Root Port - Po1
+State - Forwarding
+
+VLAN 40:
+Root Port - Po1
+State - Forwarding
+
+==================================================
+SSH MANAGEMENT
+==================================================
+
+SSH:
+Enabled
+
+SSH Version:
+2.0
+
+VTY Access:
+SSH only
+
+Management IP:
+10.10.99.11
+
+==================================================
+VERIFICATION
+==================================================
+
+show vlan brief
+show interfaces trunk
+show etherchannel summary
+show spanning-tree vlan 10
+show spanning-tree vlan 20
+show spanning-tree vlan 30
+show spanning-tree vlan 40
+show ip interface brief
+show ip ssh
+
+==================================================
+STATUS
+==================================================
+
+VLANs:
+Configured
+
+802.1Q Trunk:
+Operational
+
+EtherChannel:
+Operational
+
+STP:
+Operational
+
+Management SVI:
+10.10.99.11 - Up/Up
+
+SSH:
+Enabled - Version 2.0
