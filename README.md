@@ -125,15 +125,39 @@ SSH version 2
 Extended IPv4 ACLs
 
 
+
 ## VLAN Design
 
-| VLAN ID | Name | Network | Gateway |
-|---|---|---|---|
-| 10 | USERS | 10.10.10.0/24 | 10.10.10.1 |
-| 20 | SERVERS | 10.10.20.0/24 | 10.10.20.1 |
-| 30 | MANAGEMENT | 10.10.30.0/24 | 10.10.30.1 |
-| 40 | GUEST | 10.10.40.0/24 | 10.10.40.1 |
-| 99 | NATIVE | Management / Native VLAN | — |
+The network uses VLAN segmentation to separate users, servers, management traffic, and guest traffic.
+
+| VLAN ID | Name | Network | Default Gateway | Purpose |
+|---:|---|---|---|---|
+| 10 | USERS | 10.10.10.0/24 | 10.10.10.1 | Internal user endpoints |
+| 20 | SERVERS | 10.10.20.0/24 | 10.10.20.1 | Server infrastructure |
+| 30 | MANAGEMENT | 10.10.30.0/24 | 10.10.30.1 | Network/device management |
+| 40 | GUEST | 10.10.40.0/24 | 10.10.40.1 | Guest endpoints |
+| 99 | NATIVE | 10.10.99.0/24 | 10.10.99.1 | Management and native VLAN |
+
+### VLAN Security
+
+Guest traffic from VLAN 40 is restricted from accessing internal networks using the `GUEST-RESTRICT` extended ACL.
+
+The ACL blocks access from:
+
+- USERS — `10.10.10.0/24`
+- SERVERS — `10.10.20.0/24`
+- MANAGEMENT — `10.10.30.0/24`
+- Remote internal VLANs — `10.20.10.0/24` through `10.20.99.0/24`
+
+Guest traffic that is not destined for these internal networks is permitted.
+
+### Trunk Configuration
+
+The access-to-core Port-channel trunks use:
+
+- 802.1Q encapsulation
+- Native VLAN 99
+- Allowed VLANs 10, 20, 30, 40, and 99
 
 ## Routing
 
