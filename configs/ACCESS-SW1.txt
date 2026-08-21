@@ -1,1 +1,131 @@
 
+ACCESS-SW1#show running-config
+Building configuration...
+
+Current configuration : 2143 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ACCESS-SW1
+!
+enable secret 5 $1$mERr$CJwqOh3WnG/b.aT8NV1J0.
+!
+!
+!
+ip ssh version 2
+ip domain-name enterprise.local
+!
+username admin secret 5 $1$mERr$kku/hiJPh.4Yp8Xor/4kz1
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 10,20,30,40,99 priority 28672
+!
+interface Port-channel1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface FastEthernet0/5
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ ip address 10.10.99.11 255.255.255.0
+!
+ip default-gateway 10.10.99.1
+!
+banner motd ^CAUTHORIZED ACCESS ONLY - ACCESS-SW1^C
+!
+!
+!
+line con 0
+ password Console@123
+ login
+!
+line vty 0 4
+ password VTY@123
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
