@@ -1,58 +1,196 @@
 # Enterprise Network Lab
 
-A practical Cisco enterprise networking lab designed to demonstrate enterprise LAN/WAN concepts, routing, switching, network security, troubleshooting, and network operations.
+A multi-site enterprise network lab built using Cisco Packet Tracer, demonstrating enterprise switching, routing, network services, security, and troubleshooting.
 
-## 🎯 Project Objective
+## Project Overview
 
-The objective of this project is to design, configure, document, and troubleshoot a small enterprise network using Cisco networking technologies.
+This project simulates a structured enterprise network with two core switches and two access switches.
 
-The lab focuses on practical implementation rather than only theoretical concepts.
+The lab demonstrates:
 
-## 🏗️ Network Technologies
-
-- VLANs
-- Inter-VLAN Routing
-- Trunking
-- Spanning Tree Protocol (STP)
-- EtherChannel
-- OSPF
-- Access Control Lists (ACLs)
+- Enterprise VLAN design
+- Inter-VLAN routing
+- OSPF dynamic routing
+- LACP EtherChannel
+- Spanning Tree Protocol
 - DHCP
-- NAT
-- SSH
-- Network Troubleshooting
+- SSH management
+- Guest network security using ACLs
+- Network troubleshooting and verification
 
-## 🖥️ Lab Environment
+## Network Topology
 
-The lab will simulate an enterprise network containing:
+The network consists of:
 
-- Cisco Routers
-- Cisco Layer 2/Layer 3 Switches
-- End-user devices
-- Multiple VLANs
-- Internal routing
-- Network security controls
+- CORE-SW1
+- CORE-SW2
+- ACCESS-SW1
+- ACCESS-SW2
+- User PCs
+- Server devices
 
-## 📐 Network Architecture
+## VLAN Design
 
-The network topology will be documented in the `diagrams` directory.
+| VLAN | Name | Purpose |
+|---:|---|---|
+| 10 | USERS | End-user devices |
+| 20 | SERVERS | Server devices |
+| 30 | MANAGEMENT | Management devices |
+| 40 | GUEST | Guest devices |
+| 99 | NATIVE | Native and management traffic |
 
-## 📁 Repository Structure
+## IP Addressing
 
-```text
-enterprise-network-lab/
-│
-├── README.md
-├── LICENSE
-│
-├── diagrams/
-│   └── Network topology diagrams
-│
-├── configs/
-│   └── Cisco device configurations
-│
-├── documentation/
-│   └── Network design and technical documentation
-│
-└── verification/
-    └── Testing and troubleshooting results
+### Site 1
+
+| VLAN | Network | Gateway |
+|---:|---|---|
+| 10 | 10.10.10.0/24 | 10.10.10.1 |
+| 20 | 10.10.20.0/24 | 10.10.20.1 |
+| 30 | 10.10.30.0/24 | 10.10.30.1 |
+| 40 | 10.10.40.0/24 | 10.10.40.1 |
+| 99 | 10.10.99.0/24 | 10.10.99.1 |
+
+### Site 2
+
+| VLAN | Network | Gateway |
+|---:|---|---|
+| 10 | 10.20.10.0/24 | 10.20.10.1 |
+| 20 | 10.20.20.0/24 | 10.20.20.1 |
+| 30 | 10.20.30.0/24 | 10.20.30.1 |
+| 40 | 10.20.40.0/24 | 10.20.40.1 |
+| 99 | 10.20.99.0/24 | 10.20.99.1 |
+
+## Switching
+
+The switching infrastructure uses:
+
+- VLAN segmentation
+- Access ports
+- 802.1Q trunking
+- Native VLAN 99
+- LACP EtherChannel
+- Spanning Tree Protocol
+- PortFast
+
+### EtherChannel
+
+ACCESS-SW1:
+
+Po1
+Fa0/1
+Fa0/4
+LACP
+
+ACCESS-SW2:
+
+Po2
+Fa0/1
+Fa0/4
+LACP
+Routing
+
+Inter-VLAN routing is provided using Layer 3 SVIs.
+
+OSPF is used for dynamic routing between the core switches.
+
+OSPF Transit Networks
+10.10.101.0/30
+10.10.102.0/30
+
+OSPF neighbor relationships were verified in the FULL/BDR state.
+
+Network Services
+
+The project includes:
+
+DHCP
+SSH Version 2
+Local VTY authentication
+Management VLAN
+Network Security
+
+Security controls include:
+
+SSH-only remote management
+Local authentication
+Dedicated management VLAN
+Guest network isolation
+Extended ACL
+PortFast on appropriate end-host ports
+Guest ACL
+
+The GUEST-RESTRICT ACL restricts guest traffic from accessing selected internal networks.
+
+Guest network:
+
+10.10.40.0/24
+Verification
+
+The following Cisco IOS commands were used during implementation and verification:
+
+show vlan brief
+show interfaces trunk
+show etherchannel summary
+show spanning-tree vlan 10
+show spanning-tree vlan 20
+show spanning-tree vlan 30
+show spanning-tree vlan 40
+show ip interface brief
+show ip route
+show ip ospf neighbor
+show ip dhcp binding
+show ip ssh
+show access-lists
+Documentation
+
+Detailed project documentation is available in the documentation directory:
+
+Network Requirements
+IP Addressing Plan
+VLAN Design
+Switching
+Routing
+Network Services
+Network Security
+Verification and Testing
+Troubleshooting
+Project Summary
+Skills Demonstrated
+Cisco IOS
+Enterprise Networking
+Cisco Switching
+VLANs
+802.1Q Trunking
+EtherChannel
+LACP
+STP
+Inter-VLAN Routing
+OSPF
+DHCP
+SSH
+ACL
+Network Security
+Network Troubleshooting
+Network Documentation
+Project Status
+
+Completed
+
+The network configuration, security controls, routing, switching, services, verification, and documentation have been implemented and verified.
+
+Author
+
+Ashutosh Vikhe
+
+Network & Security Engineer
+
+Core areas:
+
+Enterprise Networking
+Cisco Switching & Routing
+Network Security
+Cisco ISE / NAC
+Network Automation
+Cloud & DevOps
+
