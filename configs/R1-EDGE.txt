@@ -1,1 +1,31 @@
-
+!
+hostname R1-EDGE
+!
+enable secret Cisco@123
+!
+service password-encryption
+!
+banner motd #AUTHORIZED ACCESS ONLY - R1-EDGE#
+!
+line console 0
+ password Console@123
+ login
+!
+line vty 0 4
+ password VTY@123
+ login
+ transport input ssh
+!
+interface GigabitEthernet0/0
+ description WAN-to-R2-CORE
+ ip address 10.10.100.1 255.255.255.252
+ no shutdown
+!
+router ospf 1
+ router-id 4.4.4.4
+ network 10.10.100.0 0.0.0.3 area 0
+ default-information originate
+!
+ip route 0.0.0.0 0.0.0.0 10.10.100.1
+!
+end
