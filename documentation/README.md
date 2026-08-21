@@ -104,15 +104,15 @@ The lab has verified DHCP leases on both core switches.
 Network operation is verified using Cisco IOS commands including:
 
 - show vlan brief
-- show interfaces trunk`
-- show etherchannel summary`
-- show spanning-tree`
-- show ip interface brief`
+- show interfaces trunk
+- show etherchannel summary
+- show spanning-tree
+- show ip interface brief
 - show ip route`
-- `show ip ospf neighbor`
-- `show ip dhcp binding`
-- `show ip ssh`
-- `show access-lists`
+- show ip ospf neighbor
+- show ip dhcp binding
+- show ip ssh
+- show access-lists
 
 Detailed verification results are documented in the `verification` directory.
 
