@@ -2,98 +2,81 @@
 
 ## 1. Overview
 
-This document defines the IP addressing scheme used in the Enterprise Network Lab.
+The network uses separate IP address ranges for each VLAN and site.
 
-The addressing plan uses private IPv4 address space and separates users, servers, management, and guest devices into different VLANs.
+The first site uses the `10.10.0.0/16` address space.
 
-## 2. VLAN Addressing
+The second site uses the `10.20.0.0/16` address space.
 
-| VLAN ID | VLAN Name | Network | Subnet Mask | Default Gateway |
-|---:|---|---|---|---|
-| 10 | USERS | 10.10.10.0/24 | 255.255.255.0 | 10.10.10.1 |
-| 20 | SERVERS | 10.10.20.0/24 | 255.255.255.0 | 10.10.20.1 |
-| 30 | MANAGEMENT | 10.10.30.0/24 | 255.255.255.0 | 10.10.30.1 |
-| 40 | GUEST | 10.10.40.0/24 | 255.255.255.0 | 10.10.40.1 |
-| 99 | NATIVE | N/A | N/A | N/A |
+Each VLAN uses a `/24` subnet.
 
-## 3. Router Addressing
+## 2. CORE-SW1 IP Addressing
 
-| Device | Interface | IP Address | Subnet Mask | Purpose |
-|---|---|---|---|---|
-| R1-EDGE | G0/0 | 10.10.100.1 | 255.255.255.252 | WAN link |
-| R2-CORE | G0/0 | 10.10.100.2 | 255.255.255.252 | WAN link |
+| Interface | VLAN / Purpose | Network | IP Address |
+|---|---|---|---|
+| Vlan10 | USERS | 10.10.10.0/24 | 10.10.10.1 |
+| Vlan20 | SERVERS | 10.10.20.0/24 | 10.10.20.1 |
+| Vlan30 | MANAGEMENT | 10.10.30.0/24 | 10.10.30.1 |
+| Vlan40 | GUEST | 10.10.40.0/24 | 10.10.40.1 |
+| Vlan99 | NATIVE/MGMT | 10.10.99.0/24 | 10.10.99.1 |
+| Fa0/1 | OSPF Transit | 10.10.101.0/30 | 10.10.101.2 |
 
-## 4. End Device Addressing
+## 3. CORE-SW2 IP Addressing
 
-### VLAN 10 - Users
+| Interface | VLAN / Purpose | Network | IP Address |
+|---|---|---|---|
+| Vlan10 | USERS | 10.20.10.0/24 | 10.20.10.1 |
+| Vlan20 | SERVERS | 10.20.20.0/24 | 10.20.20.1 |
+| Vlan30 | MANAGEMENT | 10.20.30.0/24 | 10.20.30.1 |
+| Vlan40 | GUEST | 10.20.40.0/24 | 10.20.40.1 |
+| Vlan99 | NATIVE/MGMT | 10.20.99.0/24 | 10.20.99.1 |
+| Fa0/1 | OSPF Transit | 10.10.102.0/30 | 10.10.102.2 |
 
-| Device | IP Address | Gateway |
+## 4. Access Switch Management
+
+### ACCESS-SW1
+
+| Device | Interface | IP Address | Network |
+|---|---|---|---|
+| ACCESS-SW1 | Vlan99 | 10.10.99.11 | 10.10.99.0/24 |
+
+### ACCESS-SW2
+
+| Device | Interface | IP Address | Network |
+|---|---|---|---|
+| ACCESS-SW2 | Vlan99 | 10.20.99.11 | 10.20.99.0/24 |
+
+## 5. VLAN Addressing Summary
+
+| VLAN | Name | Site 1 Network | Site 1 Gateway | Site 2 Network | Site 2 Gateway |
+|---:|---|---|---|---|---|
+| 10 | USERS | 10.10.10.0/24 | 10.10.10.1 | 10.20.10.0/24 | 10.20.10.1 |
+| 20 | SERVERS | 10.10.20.0/24 | 10.10.20.1 | 10.20.20.0/24 | 10.20.20.1 |
+| 30 | MANAGEMENT | 10.10.30.0/24 | 10.10.30.1 | 10.20.30.0/24 | 10.20.30.1 |
+| 40 | GUEST | 10.10.40.0/24 | 10.10.40.1 | 10.20.40.0/24 | 10.20.40.1 |
+| 99 | NATIVE/MGMT | 10.10.99.0/24 | 10.10.99.1 | 10.20.99.0/24 | 10.20.99.1 |
+
+## 6. OSPF Transit Networks
+
+The core switches use Layer 3 transit networks for OSPF connectivity.
+
+| Network | Device IP | Purpose |
 |---|---|---|
-| PC-USER01 | 10.10.10.10/24 | 10.10.10.1 |
-| PC-USER02 | 10.10.10.11/24 | 10.10.10.1 |
+| 10.10.101.0/30 | CORE-SW1 — 10.10.101.2 | OSPF transit |
+| 10.10.102.0/30 | CORE-SW2 — 10.10.102.2 | OSPF transit |
 
-### VLAN 20 - Servers
+The verified OSPF neighbor addresses are:
 
-| Device | IP Address | Gateway |
-|---|---|---|
-| PC-SERVER01 | 10.10.20.10/24 | 10.10.20.1 |
+- CORE-SW1 → 10.10.101.1
+- CORE-SW2 → 10.10.102.1
 
-### VLAN 40 - Guest
+## 7. DHCP Networks
 
-| Device | IP Address | Gateway |
-|---|---|---|
-| PC-GUEST01 | 10.10.40.10/24 | 10.10.40.1 |
+DHCP is configured for client networks.
 
-## 5. Management Addressing
+### CORE-SW1
 
-Management addresses will be assigned from VLAN 30.
+DHCP network:
 
-| Device | Management IP |
-|---|---|
-| CORE-SW1 | 10.10.30.11 |
-| CORE-SW2 | 10.10.30.12 |
-| ACCESS-SW1 | 10.10.30.21 |
-| ACCESS-SW2 | 10.10.30.22 |
-
-## 6. WAN Network
-
-The point-to-point WAN network uses:
-
-Network: `10.10.100.0/30`
-
-| Device | IP Address |
-|---|---|
-| R1-EDGE | 10.10.100.1 |
-| R2-CORE | 10.10.100.2 |
-
-## 7. Address Allocation Strategy
-
-The following allocation strategy will be used:
-
-- `.1` - Default gateway
-- `.2-.9` - Infrastructure devices
-- `.10-.49` - Static endpoints
-- `.50-.199` - DHCP client range
-- `.200-.254` - Reserved addresses
-
-## 8. Design Considerations
-
-The addressing plan provides:
-
-- Logical network segmentation
-- Simple troubleshooting
-- Predictable addressing
-- Dedicated management network
-- Separate guest network
-- Room for future expansion
-
-## 9. Future Expansion
-
-Additional VLANs and subnets can be added using the same structured addressing approach.
-
-Examples:
-
-- Voice VLAN
-- Wireless VLAN
-- Security/IoT VLAN
-- Additional server VLAN
+10.10.10.0/24
+Gateway: 10.10.10.1
