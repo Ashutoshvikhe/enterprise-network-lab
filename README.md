@@ -179,14 +179,11 @@ Completed
 
 The network configuration, security controls, routing, switching, services, verification, and documentation have been implemented and verified.
 
-Author
-
+#### Author
 Ashutosh Vikhe
-
-Network & Security Engineer
+SENIOR ENGINEER - DIGITAL NETWORK & SECURITY
 
 Core areas:
-
 Enterprise Networking
 Cisco Switching & Routing
 Network Security
